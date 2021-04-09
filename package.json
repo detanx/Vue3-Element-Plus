@@ -16,6 +16,7 @@
         "moment": "^2.29.1",
         "vite": "^2.1.0",
         "vite-plugin-babel-import": "^2.0.2",
+        "vite-plugin-style-import": "^0.9.2",
         "vue": "^3.0.5",
         "vue-router": "4"
     },
@@ -25,7 +26,6 @@
         "@vue/cli-plugin-babel": "^4.5.12",
         "@vue/compiler-sfc": "^3.0.5",
         "babel-plugin-component": "^1.1.1",
-        "babel-plugin-import": "^1.13.3",
         "eslint": "^7.22.0",
         "eslint-config-airbnb-base": "^14.2.1",
         "eslint-import-resolver-alias": "^1.1.2",

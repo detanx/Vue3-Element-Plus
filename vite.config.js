@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite';
 import path from 'path';
 import vue from '@vitejs/plugin-vue';
-import vitePluginImport from 'vite-plugin-babel-import';
+// import vitePluginImport from 'vite-plugin-babel-import';
+import styleImport from 'vite-plugin-style-import';
 // let debugUrl = 'http://116.196.82.30:90' // 测试环境01
 const debugUrl = 'http://182.92.160.173:90'; // 测试环境02
 const baseUrl = {
@@ -41,15 +42,30 @@ export default ({ mode }) => defineConfig({
     },
     plugins: [
         vue(),
-        vitePluginImport([
-            {
+        styleImport({
+            libs: [{
                 libraryName: 'element-plus',
-                libraryDirectory: 'es',
-                style(name) {
-                    return `element-plus/lib/theme-chalk/${name}.css`;
-                },
-            },
-        ])],
+                esModule: true,
+                ensureStyleFile: true,
+                // resolveStyle: (name) => { // 引入 .scss 样式
+                //     // eslint-disable-next-line no-param-reassign
+                //     name = name.slice(3);
+                //     return `element-plus/packages/theme-chalk/src/${name}.scss`;
+                // },
+                resolveStyle: (name) => `element-plus/lib/theme-chalk/${name}.css`, // 引入 .css 样式
+                resolveComponent: (name) => `element-plus/lib/${name}`,
+            }],
+        }),
+        // vitePluginBabelImport([
+        //     {
+        //         libraryName: 'element-plus',
+        //         libraryDirectory: 'es',
+        //         style(name) {
+        //             return `element-plus/lib/theme-chalk/${name}.css`;
+        //         },
+        //     },
+        // ])
+    ],
     // 配置Dep优化行为
     // optimizeDeps: {
     //     include: ['lodash-es'],
