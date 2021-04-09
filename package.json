@@ -6,26 +6,7 @@
         "build:beta": "vite build --mode beta",
         "build:release": "vite build --mode release",
         "serve": "vite preview",
-        "lint-staged": "lint-staged"
-    },
-
-    "lint-staged": {
-        "*.{js, vue}": [
-            "prettier --write",
-            "eslint --cache --fix",
-            "git add"
-        ]
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged",
-            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-        }
-    },
-    "config": {
-        "commitizen": {
-            "path": "cz-customizable"
-        }
+        "prepare": "husky install"
     },
     "dependencies": {
         "@vitejs/plugin-vue": "^1.1.5",
