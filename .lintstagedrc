@@ -1,0 +1,4 @@
+{
+  "*.{js,vue}": ["npm run lint"],
+  "*.{html,vue,css,scss,sass,less}": ["stylelint --fix"]
+}

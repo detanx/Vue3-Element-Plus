@@ -17,7 +17,10 @@ module.exports = {
         ],
         quotes: ['error', 'single', { allowTemplateLiterals: true }], // 字符串使用单引号/模版字符串
         'import/no-absolute-path': [0], // 关闭不能使用绝对路径导入模块 @ 别名
-        'import/no-unresolved': [0],
+        'import/no-unresolved': [0], // 关闭不能使用 @ 导入模块
+        'vue/comment-directive': [0, {
+            reportUnusedDisableDirectives: false,
+        }],
         'no-restricted-globals': [0], // 关闭不能使用 isNaN 等方法
     },
     overrides: [
@@ -33,7 +36,7 @@ module.exports = {
     // @路径引入的文件也需要校验
         'import/resolver': {
             alias: {
-                map: [['@', './src']],
+                map: [['@', '/src']],
                 extensions: ['.ts', '.js', '.jsx', '.json', '.vue'],
             },
         },

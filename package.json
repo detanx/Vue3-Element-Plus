@@ -6,6 +6,7 @@
         "build:beta": "vite build --mode beta",
         "build:release": "vite build --mode release",
         "serve": "vite preview",
+        "lint": "eslint . --ext .js,.ts,.vue --ignore-path .gitignore",
         "prepare": "husky install"
     },
     "dependencies": {
@@ -19,6 +20,8 @@
         "vue-router": "4"
     },
     "devDependencies": {
+        "@commitlint/cli": "^12.1.1",
+        "@commitlint/config-conventional": "^12.1.1",
         "@vue/cli-plugin-babel": "^4.5.12",
         "@vue/compiler-sfc": "^3.0.5",
         "babel-plugin-component": "^1.1.1",
@@ -30,7 +33,9 @@
         "eslint-plugin-vue": "^7.8.0",
         "husky": "^6.0.0",
         "lint-staged": "^10.5.4",
-        "sass": "^1.32.8"
+        "sass": "^1.32.8",
+        "stylelint": "^13.12.0",
+        "stylelint-config-standard": "^21.0.0"
     },
     "browserslist": [
         "> 1%",
