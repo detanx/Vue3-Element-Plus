@@ -1,0 +1,79 @@
+{
+    "liveServer.settings.donotShowInfoMsg": true,
+    "explorer.confirmDelete": false,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.fontSize": 14,
+    "editor.tabSize": 4,
+    "explorer.confirmDragAndDrop": false,
+    "sync.gist": "a2d9b94eef20f5e2fb3da3ca496dffa9",
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "emmet.triggerExpansionOnTab": true,
+    "sync.autoUpload": false,
+    "javascript.implicitProjectConfig.experimentalDecorators": true,
+    "workbench.colorTheme": "Shades of Purple",
+    "workbench.iconTheme": "file-icons",
+    "powermode.enabled": true, // 暂时禁用输入火花插件
+    "go.formatTool": "goimports",
+    "http.proxyAuthorization": null,
+    "vetur.ignoreProjectWarning": true,
+    "editor.formatOnSave": true, // 每次保存的时候自动格式化
+    "editor.codeActionsOnSave": { // 自动修复
+        "source.fixAll.eslint": true
+    },
+    "eslint.options": { // 指定vscode的eslint所处理的文件的后缀
+        "extensions": [".js", ".vue", ".ts", ".tsx"]
+    },
+    "eslint.validate": [ // 配置 ESLint 检查的文件类型
+        "vue",
+        "html",
+        "javascript",
+        "typescript",
+        "javascriptreact",
+        "typescriptreact"
+    ],
+    "vetur.format.defaultFormatter.html": "prettier",
+    "beautify.language": {
+        "js": {
+            "type": [
+                "javascript",
+                "json"
+            ],
+            "filename": [
+                ".jshintrc",
+                ".jsbeautify"
+            ]
+        },
+        "css": [
+            "css",
+            "scss"
+        ],
+        "html": [
+            "htm",
+            "html",
+            "vue" // 在这里加上vue
+        ]
+    },
+    "[json]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "workbench.editorAssociations": [
+
+    ],
+    "fileheader.customMade": { // 文件注释
+        "Description": "This is file description",
+        "Author": "小小小十七",
+        "Date": "Do not edit",
+        "LastEditors": "小小小十七",
+        "LastEditTime": "Do not edit"
+    },
+    "fileheader.cursorMode": { // 函数注释
+        "Description": "This is function description",
+        "param": "",
+        "return": ""
+    },
+    "fileheader.configObj": { // 插件配置项 https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE%E5%AD%97%E6%AE%B5
+        "autoAdd": false // 检测文件没有头部注释，自动添加文件头部注释
+    }
+}
