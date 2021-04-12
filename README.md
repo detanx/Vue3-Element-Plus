@@ -510,6 +510,124 @@ yarn add -D stylelint stylelint-config-standard
 2. `git` 提交规范
    ![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/24f9246dee4247039d9afbd416848e78~tplv-k3u1fbpfcp-watermark.image)
 
+### 增加多语言配置
+
+#### 安装依赖
+
+```
+yarn add vue-i18n -S
+```
+
+#### 增加 lang 目录及语言配置文件
+
+- 增加 `src/lang/en.js`
+
+```
+// src/lang/en.js
+export default {
+    user: {
+        name: 'Detanx',
+        changeLang: 'Change Language',
+    },
+    home: {
+        toLogin: 'To Login',
+    },
+    login: {
+        toHome: 'To Home',
+    },
+};
+```
+
+- 增加 `src/lang/zh-cn.js`
+
+```
+// src/lang/zh-cn.js
+export default {
+    user: {
+        name: '小小小十七',
+        changeLang: '切换语言',
+    },
+    home: {
+        toLogin: '去登录',
+    },
+    login: {
+        toHome: '去首页',
+    },
+};
+```
+
+- 增加 `src/lang/index.js`
+
+```
+// src/lang/index.js
+import { createI18n } from 'vue-i18n';
+import elementlangEn from 'element-plus/lib/locale/lang/en';
+import elementlangZhCn from 'element-plus/lib/locale/lang/zh-cn';
+import localeLangEn from './en';
+import localeLangZhCn from './zh-cn';
+
+const messages = {
+    en: {
+        ...localeLangEn,
+        ...elementlangEn,
+    },
+    'zh-cn': {
+        ...localeLangZhCn,
+        ...elementlangZhCn,
+    },
+};
+
+const i18n = createI18n({
+    locale: localStorage.getItem('lang') || 'zh-cn',
+    messages,
+});
+
+export default i18n;
+```
+
+#### 修改 main.js
+
+```
+// main.js
+import { createApp } from 'vue';
+import element from '@/common/element/components';
+
++ import ElementLocale from 'element-plus/lib/locale';
++ import i18n from '@/lang';
+import App from './App.vue';
+import router from './router';
+
++ ElementLocale.i18n((key, value) => i18n.global.t(key, value));
+
+const app = createApp(App);
+app.config.globalProperties.$ELEMENT = { size: 'small', zIndex: 3000 };
+// 注册 element 组件 插件
+element(app);
+app.use(router);
++ app.use(i18n);
+app.mount('#app');
+```
+
+#### 修改页面文件
+
+```
+// src/pages/home/index.vue
+<template>
+-  <p>home</p>
+-  <el-button type="primary" @click="toLogin">Login</el-button>
++  <el-button type="primary" @click="$i18n.locale = $i18n.locale === 'en' ? 'zh-cn' : 'en'">
++    {{$t("user.changeLang")}}
++  </el-button>
++  <p style="margin: 10px;">{{$t("user.name")}}</p>
++  <el-button type="primary" @click="toLogin">{{$t("home.toLogin")}}</el-button>
+</template>
+...
+```
+
+#### 测试结果演示
+
+[i18n-test.mov](https://github.com/detanx/Vue3-Element-Plus/blob/main/i18n-test.mov)
+
 ### 往期精彩
 
 - [「前端进阶」JavaScript 手写方法/使用技巧自查](https://juejin.cn/post/6945991002851115021)
